@@ -1,0 +1,88 @@
+{
+    "chapters": [
+      {
+        "title": "Tri's background",
+        "startTime": 0
+      },
+      {
+        "title": "FlashAttention’s deep dive",
+        "startTime": 2
+      },
+      {
+        "title": "How the Hazy Research group collaborates across theory, systems, and applications",
+        "startTime": 17
+      },
+      {
+        "title": "Evaluating models beyond raw performance",
+        "startTime": 25
+      },
+      {
+        "title": "FlashAttention-2",
+        "startTime": 27
+      },
+      {
+        "title": "CUDA and The Hardware Lottery",
+        "startTime": 30
+      },
+      {
+        "title": "Researching in a fast-changing market",
+        "startTime": 35
+      },
+      {
+        "title": "Promising transformer alternatives like state space models and RNNs",
+        "startTime": 37
+      },
+      {
+        "title": "The spectrum of openness in AI models",
+        "startTime": 43
+      },
+      {
+        "title": "Practical impact of models like LLAMA2 despite restrictions",
+        "startTime": 47
+      },
+      {
+        "title": "Incentives for releasing open training datasets",
+        "startTime": 49
+      },
+      {
+        "title": "Lightning Round",
+        "startTime": 53
+      },
+      {
+        "startTime": 2671,
+        "url": "https://www.latent.space/p/llama2#details",
+        "title": "LLaMA"
+      },
+      {
+        "startTime": 334,
+        "url": "https://arxiv.org/abs/2205.14135",
+        "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness"
+      },
+      {
+        "startTime": 1970,
+        "url": "https://hardwarelottery.github.io/",
+        "title": "The Hardware Lottery by Sara Hooker"
+      },
+      {
+        "startTime": 52,
+        "url": "https://www.isattentionallyouneed.com/",
+        "title": "Is Attention All You Need?"
+      },
+      {
+        "startTime": 1726,
+        "url": "https://github.com/NVIDIA/cutlass/discussions/787",
+        "title": "Nvidia CUTLASS 3"
+      },
+      {
+        "startTime": 1751,
+        "url": "https://www.tomshardware.com/news/no-sram-scaling-implies-on-more-expensive-cpus-and-gpus",
+        "title": "SRAM scaling slows"
+      },
+      {
+        "startTime": 2581,
+        "url": "https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks",
+        "title": "Recurrent Neural Networks (RNNs)"
+      }
+    ],
+    "version": "1.0.0"
+  }

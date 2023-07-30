@@ -1,0 +1,92 @@
+3
+00:00:00,000 --> 00:01:47,000
+ Intro
+
+4
+00:01:47,000 --> 00:06:24,000
+ Recapping June 2023 Updates
+
+5
+00:06:24,000 --> 00:08:00,000
+ Known Issues with Long Context
+
+6
+00:08:00,000 --> 00:10:45,000
+ New Functions API
+
+7
+00:10:45,000 --> 00:12:28,000
+ Riley Goodside
+
+8
+00:12:28,000 --> 00:14:30,000
+ Simon Willison
+
+9
+00:14:30,000 --> 00:16:05,000
+ Eric Elliott
+
+10
+00:16:05,000 --> 00:18:25,000
+ Functions API and Agents
+
+11
+00:18:25,000 --> 00:21:32,000
+ Functions API vs Google Vertex JSON
+
+12
+00:21:32,000 --> 00:26:14,000
+ From English back to Code
+
+13
+00:26:14,000 --> 00:30:39,000
+ Embedding Price Drop and Pinecone Perspective
+
+14
+00:30:39,000 --> 00:34:23,000
+ Xenova and Huggingface Perspective
+
+15
+00:34:23,000 --> 00:39:58,000
+ Function Selection
+
+16
+00:39:58,000 --> 00:42:16,000
+ Designing Code Agents with Function API
+
+17
+00:42:16,000 --> 00:46:48,000
+ Models as Routers
+
+18
+00:46:48,000 --> 00:52:15,000
+ Prompt Engineering replaced by Finetuning
+
+19
+00:52:15,000 --> 00:56:30,000
+ The 2 Code x LLM Paradigms
+
+20
+00:56:30,000 --> 00:58:54,000
+ Smol Models for the future
+
+21
+00:58:54,000 --> 01:03:27,000
+ The Evolution of the GPT API
+
+22
+01:03:27,000 --> 01:16:18,000
+ Functions API Security vs Prompt Injection
+
+23
+01:16:18,000 --> 01:17:36,000
+ GPT Model Upgrades
+
+24
+01:17:36,000 --> 01:21:03,000
+ JSONformer
+
+25
+01:21:03,000 --> 00:00:00,000
+ Closing Comments - What We Want Next
+

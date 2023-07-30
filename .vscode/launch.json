@@ -1,0 +1,56 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: generateDescriptionChapters",
+            "type": "python",
+            "request": "launch",
+            "program": "generateDescriptionChapters.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: scrapeLinks",
+            "type": "python",
+            "request": "launch",
+            "program": "scrapeLinks.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: condenseSRT",
+            "type": "python",
+            "request": "launch",
+            "program": "condenseSRT.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: generateChapterOutline",
+            "type": "python",
+            "request": "launch",
+            "program": "generateChapterOutline.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: podcastFetcher",
+            "type": "python",
+            "request": "launch",
+            "program": "podcastFetcher.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: transcriptToSRT",
+            "type": "python",
+            "request": "launch",
+            "program": "transcriptToSRT.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
