@@ -63,7 +63,12 @@ def extract_number(filename):
 
 
 def convert_time_str_to_seconds(time_str):
-    formats = ["%H:%M", "%H:%M:%S"]
+    formats = ["%M:%S", "%H:%M:%S"]
+
+    if "," in time_str:
+        time_str = time_str.split(",")[0]  # Remove milliseconds
+    if time_str.startswith("00:"):
+        time_str = time_str[3:]  # Trim leading zero hours
 
     for time_format in formats:
         try:
@@ -78,6 +83,21 @@ def convert_time_str_to_seconds(time_str):
         except ValueError:
             pass  # Incorrect format, let's try the next one
 
+    # Let's manually handle time string where hour > 23
+    try:
+        parts = time_str.split(":")
+        total_seconds = 0
+        if len(parts) == 3:
+            total_seconds += int(parts[0]) * 3600  # hour to seconds
+            total_seconds += int(parts[1]) * 60  # minute to seconds
+            total_seconds += int(parts[2])  # seconds
+        elif len(parts) == 2:
+            total_seconds += int(parts[0]) * 60  # minute to seconds
+            total_seconds += int(parts[1])  # seconds
+        return total_seconds
+    except ValueError:
+        pass
+
     raise ValueError(f"Time '{time_str}' does not match any expected format {formats}")
 
 
@@ -87,7 +107,7 @@ files = os.listdir(srt_dir)
 # Sort files by number in filename, from largest to smallest
 sorted_files = sorted(files, key=extract_number, reverse=True)
 
-for filename in sorted_files[3:]:
+for filename in sorted_files[0:1]:
     with open(srt_dir + filename, "r") as f:
         transcript = f.read().strip()
 
@@ -98,7 +118,7 @@ for filename in sorted_files[3:]:
     chat_prompt_arr = []
     for i in range(20):
         if i == 0:
-            humanTemplate = '<transcript> {transcript} </transcript> \n\n Please break this podcast into sections based on topics with timestamps. Now act as a XML code outputter. Please, Do not add any additional context or introduction in your response, make sure your entire response is parseable by xml. Also do not use single quotes: "<episode> <segment><title>Intro</title><startTime>0:00</startTime><endTime>5:29</endTime></segment> </episode>"'
+            humanTemplate = '<transcript> {transcript} </transcript> \n\n Please break this podcast into 6 sections based on topics with timestamps. Now act as a XML code outputter. Please, Do not add any additional context or introduction in your response, make sure your entire response is parseable by xml. Also do not use single quotes: "<episode> <segment><title>Intro</title><startTime>0:00</startTime><endTime>5:29</endTime></segment> </episode>"'
         else:
             humanTemplate = "continue"
         humanMessagePrompt = HumanMessagePromptTemplate.from_template(humanTemplate)

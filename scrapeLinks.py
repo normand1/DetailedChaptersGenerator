@@ -14,7 +14,7 @@ links_dir = "latentspacepodcast/links/"
 files = os.listdir(desc_dir)
 sorted_files = sorted(files, key=extract_number, reverse=True)
 
-for filename in sorted_files[0:1]:
+for filename in sorted_files:
     with open(desc_dir + filename, "r", encoding="utf-8") as f:
         content = f.read().strip()
 

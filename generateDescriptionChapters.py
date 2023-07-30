@@ -52,6 +52,12 @@ for linkFile in linkFiles:
     number = extract_number(links_dir + linkFile)
 
     srt_file = find_files_with_specific_number("latentspacepodcast/srt/", number)
+    chaps_file = find_files_with_specific_number("latentspacepodcast/chapters/", number)
+
+    if not os.path.exists("latentspacepodcast/srt/" + srt_file) or not os.path.exists(
+        "latentspacepodcast/chapters/" + chaps_file
+    ):
+        continue
 
     with open("latentspacepodcast/srt/" + srt_file, "r", encoding="utf-8") as f:
         transcript = f.read().strip()
