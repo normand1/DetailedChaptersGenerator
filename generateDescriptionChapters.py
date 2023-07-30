@@ -29,13 +29,10 @@ def find_files_with_specific_number(directory, number):
 
 
 def convert_time_str_to_seconds(time_str):
-    time_format = "%H:%M:%S.%f"
+    time_format = "%H:%M:%S"
     time_object = datetime.strptime(time_str, time_format)
     total_seconds = (
-        time_object.hour * 3600
-        + time_object.minute * 60
-        + time_object.second
-        + time_object.microsecond / 1e6
+        time_object.hour * 3600 + time_object.minute * 60 + time_object.second
     )
     return int(total_seconds)
 
@@ -54,9 +51,9 @@ for linkFile in linkFiles:
     srt_file = find_files_with_specific_number("latentspacepodcast/srt/", number)
     chaps_file = find_files_with_specific_number("latentspacepodcast/chapters/", number)
 
-    if not os.path.exists("latentspacepodcast/srt/" + srt_file) or not os.path.exists(
-        "latentspacepodcast/chapters/" + chaps_file
-    ):
+    if not os.path.exists(
+        "latentspacepodcast/srt/" + (srt_file or "null")
+    ) or not os.path.exists("latentspacepodcast/chapters/" + (chaps_file or "null")):
         continue
 
     with open("latentspacepodcast/srt/" + srt_file, "r", encoding="utf-8") as f:
@@ -72,17 +69,22 @@ for linkFile in linkFiles:
         )
 
         # Strip unnecessary parts
+        # Strip unnecessary parts
         if "undefined" not in result.content:
             s = result.content
             # Regular expression to match time stamps
-            time_pattern = re.compile(r"(\d{2}:\d{2}:\d{2},\d{3})")
+            time_pattern = re.compile(
+                r"(\d{2}:\d{2}:\d{2}(?:,\d{3})?)"
+            )  # Modified regular expression to optionally capture milliseconds
 
             # Find matches
             matches = time_pattern.findall(s)
 
             # If we found exactly two matches, assign them to start_time and end_time
             if len(matches) == 2:
-                start_time, end_time = [time.replace(",", ".") for time in matches]
+                start_time, end_time = [
+                    time.split(",")[0] for time in matches
+                ]  # Splitting the time string at comma to remove milliseconds (if present)
                 print("Start time:", start_time)
                 print("End time:", end_time)
                 chapter = {
@@ -90,20 +92,18 @@ for linkFile in linkFiles:
                     "url": linkVal,
                     "title": link,
                 }
-                chapters.append(chapter)
+                # update chapters
+                chaps_file = find_files_with_specific_number(
+                    "latentspacepodcast/chapters/", number
+                )
+                # Load existing data from the file
+                with open("latentspacepodcast/chapters/" + chaps_file, "r") as f:
+                    data = json.load(f)
+
+                data["chapters"].append(chapter)
+
+                # Convert back to json and save to the file
+                with open("latentspacepodcast/chapters/" + chaps_file, "w") as f:
+                    json.dump(data, f)
             else:
                 print("Unexpected number of matches found:", len(matches))
-
-    # update chapters
-    chaps_file = find_files_with_specific_number("latentspacepodcast/chapters/", number)
-    # Load existing data from the file
-    with open("latentspacepodcast/chapters/" + chaps_file, "r") as f:
-        data = json.load(f)
-
-    # Append new chapter to the list
-    for chapter in chapters:
-        data["chapters"].append(chapter)
-
-    # Convert back to json and save to the file
-    with open("latentspacepodcast/chapters/" + chaps_file, "w") as f:
-        json.dump(data, f)
