@@ -1,4 +1,5 @@
 output/
+transcriptToSRT.py
 .env
 # Byte-compiled / optimized / DLL files
 __pycache__/
