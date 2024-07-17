@@ -5,10 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: generateDescriptionChapters",
+            "name": "Python: generateDescriptionChaptersV2",
             "type": "python",
             "request": "launch",
-            "program": "generateDescriptionChapters.py",
+            "program": "generateDescriptionChaptersV2.py",
+            "args": ["${input:podcastName}", "${input:outerGuid}"],
             "console": "integratedTerminal",
             "justMyCode": true
         },
@@ -16,23 +17,8 @@
             "name": "Python: scrapeLinks",
             "type": "python",
             "request": "launch",
+            "args": ["${input:podcastName}"],
             "program": "scrapeLinks.py",
-            "console": "integratedTerminal",
-            "justMyCode": true
-        },
-        {
-            "name": "Python: condenseSRT",
-            "type": "python",
-            "request": "launch",
-            "program": "condenseSRT.py",
-            "console": "integratedTerminal",
-            "justMyCode": true
-        },
-        {
-            "name": "Python: generateChapterOutline",
-            "type": "python",
-            "request": "launch",
-            "program": "generateChapterOutline.py",
             "console": "integratedTerminal",
             "justMyCode": true
         },
@@ -42,7 +28,8 @@
             "request": "launch",
             "program": "podcastFetcher.py",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+            "args": ["${input:podcastName}"],
         },
         {
             "name": "Python: transcriptToSRT",
@@ -51,6 +38,28 @@
             "program": "transcriptToSRT.py",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Python: app.py",
+            "type": "python",
+            "request": "launch",
+            "program": "app.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
-    ]
+    ],
+    "inputs": [
+        {
+            "id": "podcastName",
+            "type": "promptString",
+            "description": "Enter the podcast name",
+            "default": "All-In Podcast"
+        },
+        {
+            "id": "outerGuid",
+            "type": "promptString",
+            "description": "Enter the episode guid",
+            "default": ""
+        }
+    ],
 }
